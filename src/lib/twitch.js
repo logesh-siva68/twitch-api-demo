@@ -11,12 +11,9 @@ const getToken = async () => {
       client_secret: twitch.clientSecret,
       grant_type: 'client_credentials'
     })
-    console.log(data.data)
     token = data.data.access_token
-    console.log(token)
     return token
   } catch (err) {
-    console.log(err)
     throw err
   }
 }
@@ -44,7 +41,6 @@ const getChannelPoints = async (req, res, next) => {
         'Client-Id': twitch.clientId
       }
     })
-    console.log(points)
     res.status(200).json(points.data)
   } catch (err) {
     res.status(500).json(err.response.data)
